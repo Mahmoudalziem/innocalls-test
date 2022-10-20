@@ -38,7 +38,9 @@ pipeline{
            stage('Apply Application') {
             steps{
                 sh '''
-                    kubectl apply -f application.yaml
+                    curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"
+                    chmod u+x ./kubectl
+                    ./kubectl apply -f application.yaml
                     echo done
                 '''
             }
